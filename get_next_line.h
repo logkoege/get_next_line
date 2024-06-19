@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:41 by logkoege          #+#    #+#             */
-/*   Updated: 2024/05/19 02:54:46 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:29:16 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-# include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
-char 	*get_next_line(int fd);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+int		ft_strlen2(char *str);
+int		lash_n(char *baks);
+int		ft_read(int fd, void *buffer, int size);
+char	*swap_and_clear(char *src, char *dest, char *bn);
+void	ft_clean(char *src, char *bn);
+void	gratuit(char *str);
 #endif
