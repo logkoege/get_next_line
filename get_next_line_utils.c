@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:25 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/19 18:22:25 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:52:42 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-void	ft_clean(char *src, char *bn)
+void	mr_propre(char *src, char *bn)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/19 18:33:26 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:52:48 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*swap_and_clear(char *src, char *dest, char *bn)
 		str[i + j] = src[j];
 	str[i + j] = '\0';
 	gratuit(str);
-	ft_clean(src, bn);
+	mr_propre(src, bn);
 	return (str);
 }
 

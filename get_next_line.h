@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:41 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/19 18:29:16 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:52:55 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		ft_strlen2(char *str);
 int		lash_n(char *baks);
 int		ft_read(int fd, void *buffer, int size);
 char	*swap_and_clear(char *src, char *dest, char *bn);
-void	ft_clean(char *src, char *bn);
+void	mr_propre(char *src, char *bn);
 void	gratuit(char *str);
 #endif
