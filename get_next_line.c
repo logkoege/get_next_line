@@ -6,13 +6,13 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/25 17:04:55 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:31:17 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	copy_cat(char *dbu, char *fin, char *dest)
+char	*copy_cat(char *dbu, char *fin, char *dest)
 {
 	int	i;
 	int	j;
@@ -31,31 +31,31 @@ char	copy_cat(char *dbu, char *fin, char *dest)
 	}
 	dest[i + j] = '\0';
 	ft_free(dbu);
-	return (*dest);
+	return (dest);
 }
 
 char	*ft_split(char *tab, char c)
 {
-	int		a;
+	int		i;
 	int		chr;
 	char	*str;
 
-	a = 0;
+	i = 0;
 	chr = 0;
 	if (ft_strchr(tab, c) == NULL)
 		return (tab);
 	while (tab[chr] != c)
 		chr++;
 	str = malloc(sizeof(char) * (chr + 2));
-	while (a < chr)
+	while (i < chr)
 	{
-		str[a] = tab[a];
-		a++;
+		str[i] = tab[i];
+		i++;
 	}
-	str[a] = tab[a];
-	a++;
+	str[i] = tab[i];
+	i++;
 	free (tab);
-	str[a] = '\0';
+	str[i] = '\0';
 	return (str);
 }
 
@@ -108,19 +108,33 @@ char	*get_next_line(int fd)
 		return (NULL);
 	ligne = ft_strdup(apres_n);
 	ft_bzero(apres_n, BUFFER_SIZE + 1);
+	printf("a\n");
 	while (ft_strchr(ligne, '\n') == NULL)
 	{
+		srch_read = read(fd, ligne, BUFFER_SIZE);
 		if (srch_read == 0)
 			break ;
-		srch_read = read(fd, ligne, BUFFER_SIZE);
-		if (srch_read < 0 && ft_free(ligne))
+		printf("g\n");
+		if (srch_read < 0)
 			return (NULL);
-		tab[srch_read] = '\0';
+		printf("b\n");
+		read_in[srch_read] = '\0';
 		ligne = (ft_strjoin(ligne, read_in));
+		break ;
 	}
 	ft_strncpy(apres_n, ligne, '\n');
+	printf("c\n");
 	ligne = ft_split(ligne, '\n');
-	if (ft_strlen(ligne) == 0 && ft_free(ligne))
+	printf("d\n");
+	if (ft_strlen(ligne) == 0)
 		return (NULL);
+	printf("%s\n", ligne);
 	return (ligne);
+}
+int	main(void)
+{
+	int	fd;
+
+	fd = open("tourpal.txt", O_RDONLY);
+	printf("%s \n", get_next_line(fd));
 }

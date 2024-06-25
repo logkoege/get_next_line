@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*s2;
 	size_t	i;
@@ -56,6 +56,7 @@ int	ft_strlen(char *str)
 		return (0);
 	while (str[i])
 		i++;
+	return (i);
 }
 
 void	ft_bzero(void *s, size_t n)
