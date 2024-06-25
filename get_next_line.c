@@ -6,13 +6,13 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/21 19:30:19 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:04:55 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	copy_cat(char *dbu, char fin, char dest)
+char	copy_cat(char *dbu, char *fin, char *dest)
 {
 	int	i;
 	int	j;
@@ -29,9 +29,9 @@ char	copy_cat(char *dbu, char fin, char dest)
 		dest[i + j] = fin[j];
 		j++;
 	}
-	dest[i + j] = '/0';
+	dest[i + j] = '\0';
 	ft_free(dbu);
-	return (dest);
+	return (*dest);
 }
 
 char	*ft_split(char *tab, char c)
@@ -99,19 +99,28 @@ char	*ft_strncpy(char *str, char *s2, char c)
 
 char	*get_next_line(int fd)
 {
-	int			;
+	int			srch_read;
 	char		*ligne;
-	char		
-	static char	buffer[BUFFER_SIZE + 1];
+	char		read_in[BUFFER_SIZE + 1];
+	static char	apres_n[BUFFER_SIZE + 1];
 
-	richard = -1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	
-
-
-
-
-
+		return (NULL);
+	ligne = ft_strdup(apres_n);
+	ft_bzero(apres_n, BUFFER_SIZE + 1);
+	while (ft_strchr(ligne, '\n') == NULL)
+	{
+		if (srch_read == 0)
+			break ;
+		srch_read = read(fd, ligne, BUFFER_SIZE);
+		if (srch_read < 0 && ft_free(ligne))
+			return (NULL);
+		tab[srch_read] = '\0';
+		ligne = (ft_strjoin(ligne, read_in));
+	}
+	ft_strncpy(apres_n, ligne, '\n');
+	ligne = ft_split(ligne, '\n');
+	if (ft_strlen(ligne) == 0 && ft_free(ligne))
+		return (NULL);
 	return (ligne);
 }
