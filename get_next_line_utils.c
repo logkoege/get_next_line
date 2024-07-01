@@ -6,13 +6,13 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:25 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/25 17:05:01 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/06/30 19:24:11 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*s2;
 	size_t	i;
@@ -56,6 +56,7 @@ int	ft_strlen(char *str)
 		return (0);
 	while (str[i])
 		i++;
+	return (i);
 }
 
 void	ft_bzero(void *s, size_t n)

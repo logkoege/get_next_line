@@ -6,13 +6,13 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/06/25 17:04:55 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/07/01 15:12:47 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	copy_cat(char *dbu, char *fin, char *dest)
+char	*copy_cat(char *dest, char *dbu, char *fin)
 {
 	int	i;
 	int	j;
@@ -31,31 +31,31 @@ char	copy_cat(char *dbu, char *fin, char *dest)
 	}
 	dest[i + j] = '\0';
 	ft_free(dbu);
-	return (*dest);
+	return (dest);
 }
 
 char	*ft_split(char *tab, char c)
 {
-	int		a;
+	int		i;
 	int		chr;
 	char	*str;
 
-	a = 0;
+	i = 0;
 	chr = 0;
 	if (ft_strchr(tab, c) == NULL)
 		return (tab);
 	while (tab[chr] != c)
 		chr++;
 	str = malloc(sizeof(char) * (chr + 2));
-	while (a < chr)
+	while (i < chr)
 	{
-		str[a] = tab[a];
-		a++;
+		str[i] = tab[i];
+		i++;
 	}
-	str[a] = tab[a];
-	a++;
-	free (tab);
-	str[a] = '\0';
+	str[i] = tab[i];
+	i++;
+	free(tab);
+	str[i] = '\0';
 	return (str);
 }
 
@@ -66,9 +66,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return (s2);
+		return (ft_strdup(s2));
 	if (!s2)
-		return (s1);
+		return (ft_strdup(s1));
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);
@@ -110,17 +110,29 @@ char	*get_next_line(int fd)
 	ft_bzero(apres_n, BUFFER_SIZE + 1);
 	while (ft_strchr(ligne, '\n') == NULL)
 	{
+		srch_read = read(fd, ligne, BUFFER_SIZE);
 		if (srch_read == 0)
 			break ;
-		srch_read = read(fd, ligne, BUFFER_SIZE);
-		if (srch_read < 0 && ft_free(ligne))
+		if (srch_read < 0)
 			return (NULL);
-		tab[srch_read] = '\0';
+		read_in[srch_read] = '\0';
 		ligne = (ft_strjoin(ligne, read_in));
 	}
 	ft_strncpy(apres_n, ligne, '\n');
 	ligne = ft_split(ligne, '\n');
-	if (ft_strlen(ligne) == 0 && ft_free(ligne))
+	if (ft_strlen(ligne) == 0)
 		return (NULL);
 	return (ligne);
+}
+
+int	main(void)
+{
+	int	fd;
+
+	fd = open("tourpal.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 }
