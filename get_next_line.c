@@ -6,21 +6,13 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/07/01 15:12:47 by logkoege         ###   ########.fr       */
-=======
-/*   Updated: 2024/06/25 17:31:17 by logkoege         ###   ########.fr       */
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
+/*   Updated: 2024/07/01 15:29:09 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-<<<<<<< HEAD
 char	*copy_cat(char *dest, char *dbu, char *fin)
-=======
-char	*copy_cat(char *dbu, char *fin, char *dest)
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 {
 	int	i;
 	int	j;
@@ -62,11 +54,7 @@ char	*ft_split(char *tab, char c)
 	}
 	str[i] = tab[i];
 	i++;
-<<<<<<< HEAD
 	free(tab);
-=======
-	free (tab);
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 	str[i] = '\0';
 	return (str);
 }
@@ -120,53 +108,31 @@ char	*get_next_line(int fd)
 		return (NULL);
 	ligne = ft_strdup(apres_n);
 	ft_bzero(apres_n, BUFFER_SIZE + 1);
-	printf("a\n");
 	while (ft_strchr(ligne, '\n') == NULL)
 	{
 		srch_read = read(fd, ligne, BUFFER_SIZE);
 		if (srch_read == 0)
 			break ;
-<<<<<<< HEAD
 		if (srch_read < 0)
 			return (NULL);
-=======
-		printf("g\n");
-		if (srch_read < 0)
-			return (NULL);
-		printf("b\n");
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 		read_in[srch_read] = '\0';
 		ligne = (ft_strjoin(ligne, read_in));
-		break ;
 	}
 	ft_strncpy(apres_n, ligne, '\n');
-	printf("c\n");
 	ligne = ft_split(ligne, '\n');
-<<<<<<< HEAD
-=======
-	printf("d\n");
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 	if (ft_strlen(ligne) == 0)
 		return (NULL);
-	printf("%s\n", ligne);
 	return (ligne);
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 int	main(void)
 {
 	int	fd;
 
 	fd = open("tourpal.txt", O_RDONLY);
-<<<<<<< HEAD
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-=======
-	printf("%s \n", get_next_line(fd));
->>>>>>> ee84e0f21cba88b27db5debe855b0e762d0432a6
 }
