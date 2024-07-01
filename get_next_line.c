@@ -110,7 +110,7 @@ char	*get_next_line(int fd)
 	ft_bzero(apres_n, BUFFER_SIZE + 1);
 	while (ft_strchr(ligne, '\n') == NULL)
 	{
-		srch_read = read(fd, ligne, BUFFER_SIZE);
+		srch_read = read(fd, apres_n, BUFFER_SIZE);
 		if (srch_read == 0)
 			break ;
 		if (srch_read < 0)
